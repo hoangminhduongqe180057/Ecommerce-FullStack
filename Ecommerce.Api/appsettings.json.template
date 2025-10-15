@@ -1,0 +1,47 @@
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning",
+      "Microsoft.EntityFrameworkCore.Database.Command": "Information"
+    }
+  },
+  "AllowedHosts": "*",
+  "ConnectionStrings": {
+    "DefaultConnection": "Host=YOUR_DB_HOST;Port=5432;Database=YOUR_DB_NAME;Username=YOUR_DB_USER;Password=YOUR_DB_PASSWORD;SSL Mode=Require;Trust Server Certificate=true"
+  },
+  "SupabaseAuth": {
+    "JwtIssuer": "https://YOUR_PROJECT_ID.supabase.co/auth/v1",
+    "JwtAudience": "authenticated",
+    "JwtSecret": "YOUR_JWT_SECRET"
+  },
+  "Supabase": {
+    "Url": "https://YOUR_PROJECT_ID.supabase.co",
+    "AnonKey": "YOUR_SUPABASE_ANON_KEY"
+  },
+  "IpRateLimiting": {
+    "EnableEndpointRateLimiting": true,
+    "StackBlockedRequests": false,
+    "RealIpHeader": "X-Real-IP",
+    "ClientIdHeader": "X-ClientId",
+    "HttpStatusCode": 429,
+    "GeneralRules": [
+      {
+        "Endpoint": "*",
+        "Period": "1s",
+        "Limit": 10
+      },
+      {
+        "Endpoint": "*",
+        "Period": "1m",
+        "Limit": 100
+      }
+    ]
+  },
+  "Stripe": {
+    "SecretKey": "sk_test_YOUR_STRIPE_SECRET_KEY",
+    "WebhookSecret": "whsec_YOUR_WEBHOOK_SECRET",
+    "SuccessUrl": "https://your-frontend.com/payment/success",
+    "CancelUrl": "https://your-frontend.com/payment/cancel"
+  }
+}

@@ -1,0 +1,35 @@
+# .NET
+bin/
+obj/
+out/
+*.user
+*.suo
+*.cache
+
+# IDEs
+.vs/
+.vscode/
+.idea/
+
+# Logs
+*.log
+logs/
+
+# Environment files
+appsettings.Development.json
+appsettings.Production.json
+*.env
+.env.*
+
+# Git
+.git/
+.gitignore
+
+# Documentation
+docs/
+*.md
+!README.md
+
+# Test files
+*.http
+test-*.ps1

@@ -1,0 +1,91 @@
+# .NET Core
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.dll
+*.pdb
+*.exe
+*.log
+
+# IDEs
+.vs/
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Environment files (IMPORTANT: Don't commit secrets!)
+appsettings.Development.json
+appsettings.Production.json
+*.env
+.env.*
+
+# User secrets
+secrets.json
+
+# Rider
+.idea/
+*.sln.iml
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs
+logs/
+*.log
+
+# Test results
+TestResults/
+*.trx
+*.coverage
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa]rm/
+[Aa]rm64/
+bld/
+[Bb]in/
+[Oo]bj/
+
+# NuGet
+*.nupkg
+*.snupkg
+**/packages/*
+!**/packages/build/
+
+# Migration scripts (optional - keep if you want to track them)
+# Migrations/
+
+# Publish profiles
+PublishProfiles/
+*.pubxml
+*.publishsettings
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+_ReSharper*/
+[Tt]est[Rr]esult*/
+
+# Node (if using frontend tooling)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Stripe CLI
+.stripe/
