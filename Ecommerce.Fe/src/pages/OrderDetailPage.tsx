@@ -1,3 +1,4 @@
+// src/pages/OrderDetailPage.tsx
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import { useOrder } from '../hooks/useOrders'
 import { useCreatePayment } from '../hooks/usePayments'
@@ -12,11 +13,10 @@ export default function OrderDetailPage() {
 
   const handlePayNow = async () => {
     if (!order) return
-    
     try {
-      const { checkoutUrl } = await createPayment.mutateAsync({ 
+      const { checkoutUrl } = await createPayment.mutateAsync({
         orderId: order.id,
-        provider: 'stripe' 
+        provider: 'stripe',
       })
       window.location.href = checkoutUrl
     } catch (error: any) {
@@ -50,16 +50,15 @@ export default function OrderDetailPage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 relative overflow-hidden">
-        {/* Animated Background Blobs */}
-        <div className="absolute top-0 -left-4 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob" />
-        <div className="absolute top-0 -right-4 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000" />
-        
+      <div className="min-h-screen bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 relative overflow-hidden">
+        {/* Soft Blue Blobs */}
+        <div className="absolute top-0 -left-4 w-72 h-72 bg-sky-200 rounded-full mix-blend-multiply blur-3xl opacity-50 animate-blob" />
+        <div className="absolute top-0 -right-4 w-72 h-72 bg-indigo-200 rounded-full mix-blend-multiply blur-3xl opacity-50 animate-blob animation-delay-2000" />
         <div className="container mx-auto px-4 py-12 relative z-10">
           <div className="flex justify-center items-center min-h-[60vh]">
             <div className="text-center">
-              <div className="w-16 h-16 border-4 border-purple-600 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-              <p className="text-lg font-medium bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+              <div className="w-16 h-16 border-4 border-sky-600 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+              <p className="text-lg font-medium bg-gradient-to-r from-sky-700 to-indigo-800 bg-clip-text text-transparent">
                 Loading order details...
               </p>
             </div>
@@ -71,22 +70,20 @@ export default function OrderDetailPage() {
 
   if (error || !order) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 relative overflow-hidden">
-        {/* Animated Background Blobs */}
-        <div className="absolute top-0 -left-4 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob" />
-        <div className="absolute top-0 -right-4 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000" />
-        
+      <div className="min-h-screen bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 relative overflow-hidden">
+        <div className="absolute top-0 -left-4 w-72 h-72 bg-sky-200 rounded-full mix-blend-multiply blur-3xl opacity-50 animate-blob" />
+        <div className="absolute top-0 -right-4 w-72 h-72 bg-indigo-200 rounded-full mix-blend-multiply blur-3xl opacity-50 animate-blob animation-delay-2000" />
         <div className="container mx-auto px-4 py-12 relative z-10">
           <div className="max-w-md mx-auto">
-            <div className="bg-white/70 backdrop-blur-lg rounded-3xl p-8 shadow-xl border border-white/20 text-center">
+            <div className="bg-white/80 backdrop-blur-lg rounded-3xl p-8 shadow-xl border border-white/30 text-center">
               <div className="text-6xl mb-4">⚠️</div>
-              <h2 className="text-2xl font-bold bg-gradient-to-r from-red-600 to-pink-600 bg-clip-text text-transparent mb-2">
+              <h2 className="text-2xl font-bold bg-gradient-to-r from-rose-600 to-pink-600 bg-clip-text text-transparent mb-2">
                 Failed to load order
               </h2>
-              <p className="text-gray-600 mb-6">{error?.message || 'Order not found'}</p>
+              <p className="text-slate-600 mb-6">{(error as any)?.message || 'Order not found'}</p>
               <button
                 onClick={() => navigate('/orders')}
-                className="px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-xl font-semibold hover:shadow-lg hover:scale-105 transform transition-all duration-300"
+                className="px-6 py-3 bg-gradient-to-r from-sky-600 to-indigo-600 text-white rounded-xl font-semibold hover:shadow-lg hover:-translate-x-0.5 transition"
               >
                 ← Back to Orders
               </button>
@@ -98,34 +95,46 @@ export default function OrderDetailPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 relative overflow-hidden">
-      {/* Animated Background Blobs */}
-      <div className="absolute top-0 -left-4 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob" />
-      <div className="absolute top-0 -right-4 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000" />
-      <div className="absolute -bottom-8 left-20 w-72 h-72 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-4000" />
-      
+    <div className="min-h-screen bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 relative overflow-hidden">
+      {/* Soft Blue Blobs */}
+      <div className="absolute top-0 -left-4 w-72 h-72 bg-sky-200 rounded-full mix-blend-multiply blur-3xl opacity-50 animate-blob" />
+      <div className="absolute top-0 -right-4 w-72 h-72 bg-indigo-200 rounded-full mix-blend-multiply blur-3xl opacity-50 animate-blob animation-delay-2000" />
+      <div className="absolute -bottom-8 left-20 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply blur-3xl opacity-50 animate-blob animation-delay-4000" />
+
       <div className="container mx-auto px-4 py-8 relative z-10">
         {/* Header */}
         <div className="mb-8">
           <button
             onClick={() => navigate('/orders')}
-            className="flex items-center text-gray-600 hover:text-purple-600 mb-6 transition-colors group"
+            className="flex items-center text-slate-600 hover:text-sky-700 mb-6 transition-colors group"
           >
-            <svg className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg
+              className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
             <span className="font-semibold">Back to Orders</span>
           </button>
+
           <div className="flex flex-wrap justify-between items-start gap-4">
             <div>
-              <h1 className="text-5xl font-bold mb-2">
-                <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent">
+              <h1 className="text-5xl font-extrabold leading-tight">
+                <span className="bg-gradient-to-r from-sky-700 via-blue-700 to-indigo-800 bg-clip-text text-transparent">
                   📦 Order Details
                 </span>
               </h1>
-              <p className="text-gray-600 text-lg">Order ID: #{order.id.substring(0, 12)}...</p>
+              <p className="text-slate-600 text-lg mt-1">
+                Order ID: #{order.id.substring(0, 12)}...
+              </p>
             </div>
-            <span className={`px-6 py-3 rounded-xl text-sm font-bold capitalize ${getStatusColor(order.status)} shadow-md`}>
+            <span
+              className={`px-6 py-3 rounded-xl text-sm font-bold capitalize ${getStatusColor(
+                order.status
+              )} shadow`}
+            >
               {order.status === 'pending' && '⏳ '}
               {order.status === 'paid' && '✅ '}
               {order.status === 'failed' && '❌ '}
@@ -137,15 +146,15 @@ export default function OrderDetailPage() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Order Items */}
           <div className="lg:col-span-2">
-            <div className="bg-white/70 backdrop-blur-lg rounded-3xl p-6 shadow-xl border border-white/20">
-              <h2 className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-6">
+            <div className="bg-white/80 backdrop-blur-lg rounded-3xl p-6 shadow-xl border border-white/30">
+              <h2 className="text-2xl font-extrabold bg-gradient-to-r from-sky-700 to-indigo-800 bg-clip-text text-transparent mb-6">
                 🛒 Order Items
               </h2>
               <div className="space-y-4">
                 {order.items.map((item) => (
-                  <div 
-                    key={item.productId} 
-                    className="flex gap-4 p-4 bg-white/50 rounded-2xl hover:bg-white/70 transition-all duration-300 hover:shadow-lg"
+                  <div
+                    key={item.productId}
+                    className="flex gap-4 p-4 bg-white/60 rounded-2xl hover:bg-white transition-shadow hover:shadow-lg"
                   >
                     {item.imageUrl && (
                       <img
@@ -161,15 +170,18 @@ export default function OrderDetailPage() {
                     <div className="flex-1">
                       <Link
                         to={`/products/${item.productId}`}
-                        className="font-bold text-lg text-gray-900 hover:text-purple-600 transition-colors"
+                        className="font-bold text-lg text-slate-900 hover:text-sky-700 transition-colors"
                       >
                         {item.name}
                       </Link>
-                      <p className="text-sm text-gray-600 mt-2">
-                        Quantity: <span className="font-semibold text-gray-800">{item.quantity}</span> × 
-                        <span className="font-semibold text-gray-800"> ${item.unitPrice.toLocaleString()} VND</span>
+                      <p className="text-sm text-slate-600 mt-2">
+                        Quantity:{' '}
+                        <span className="font-semibold text-slate-800">{item.quantity}</span> ×{' '}
+                        <span className="font-semibold text-slate-800">
+                          ${item.unitPrice.toLocaleString()} VND
+                        </span>
                       </p>
-                      <p className="text-base font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mt-2">
+                      <p className="text-base font-extrabold bg-gradient-to-r from-sky-700 to-indigo-800 bg-clip-text text-transparent mt-2">
                         Subtotal: ${item.lineTotal.toLocaleString()} VND
                       </p>
                     </div>
@@ -181,27 +193,27 @@ export default function OrderDetailPage() {
 
           {/* Order Summary */}
           <div className="lg:col-span-1">
-            <div className="bg-white/70 backdrop-blur-lg rounded-3xl p-6 shadow-xl border border-white/20 sticky top-20">
-              <h2 className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-6">
+            <div className="bg-white/80 backdrop-blur-lg rounded-3xl p-6 shadow-xl border border-white/30 sticky top-20">
+              <h2 className="text-2xl font-extrabold bg-gradient-to-r from-sky-700 to-indigo-800 bg-clip-text text-transparent mb-6">
                 💳 Order Summary
               </h2>
-              
+
               <div className="space-y-4 mb-6">
-                <div className="flex justify-between text-gray-700 p-3 bg-white/50 rounded-xl">
+                <div className="flex justify-between text-slate-700 p-3 bg-white/60 rounded-xl">
                   <span className="font-semibold">📅 Order Date</span>
-                  <span className="text-sm text-gray-600">{formatDate(order.createdAt)}</span>
+                  <span className="text-sm text-slate-600">{formatDate(order.createdAt)}</span>
                 </div>
-                
-                <div className="flex justify-between text-gray-700 p-3 bg-white/50 rounded-xl">
+
+                <div className="flex justify-between text-slate-700 p-3 bg-white/60 rounded-xl">
                   <span className="font-semibold">📦 Items</span>
                   <span className="font-bold">{order.items.length}</span>
                 </div>
               </div>
 
-              <div className="border-t-2 border-gray-200 pt-6 mb-6">
+              <div className="border-t border-slate-200 pt-6 mb-6">
                 <div className="flex justify-between items-center">
-                  <span className="text-xl font-bold text-gray-700">Total</span>
-                  <span className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                  <span className="text-xl font-bold text-slate-700">Total</span>
+                  <span className="text-3xl font-extrabold bg-gradient-to-r from-sky-700 to-indigo-800 bg-clip-text text-transparent">
                     ${order.totalAmount.toLocaleString()} VND
                   </span>
                 </div>
@@ -212,7 +224,7 @@ export default function OrderDetailPage() {
                   <button
                     onClick={handlePayNow}
                     disabled={createPayment.isPending}
-                    className="w-full px-6 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-xl font-bold hover:shadow-lg hover:scale-105 transform transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 mb-3"
+                    className="w-full px-6 py-4 bg-gradient-to-r from-sky-600 to-indigo-600 text-white rounded-xl font-bold hover:shadow-lg hover:-translate-y-0.5 transition disabled:opacity-50 mb-3"
                   >
                     {createPayment.isPending ? (
                       <span className="flex items-center justify-center gap-2">
@@ -223,29 +235,29 @@ export default function OrderDetailPage() {
                       '💳 Pay Now'
                     )}
                   </button>
-                  <p className="text-sm text-gray-500 text-center">
+                  <p className="text-sm text-slate-500 text-center">
                     Complete your payment to confirm this order
                   </p>
                 </>
               )}
 
               {order.status === 'paid' && (
-                <div className="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-300 rounded-2xl p-6 text-center">
+                <div className="bg-gradient-to-r from-emerald-50 to-green-50 border-2 border-emerald-300 rounded-2xl p-6 text-center">
                   <div className="text-6xl mb-3">✅</div>
-                  <p className="text-green-800 font-bold text-lg">Payment Successful</p>
-                  <p className="text-green-600 text-sm mt-2">Your order has been confirmed</p>
+                  <p className="text-emerald-800 font-bold text-lg">Payment Successful</p>
+                  <p className="text-emerald-600 text-sm mt-2">Your order has been confirmed</p>
                 </div>
               )}
 
               {order.status === 'failed' && (
-                <div className="bg-gradient-to-r from-red-50 to-pink-50 border-2 border-red-300 rounded-2xl p-6 text-center">
+                <div className="bg-gradient-to-r from-rose-50 to-red-50 border-2 border-rose-300 rounded-2xl p-6 text-center">
                   <div className="text-6xl mb-3">❌</div>
-                  <p className="text-red-800 font-bold text-lg">Payment Failed</p>
-                  <p className="text-red-600 text-sm mt-2 mb-4">Please try again</p>
+                  <p className="text-rose-800 font-bold text-lg">Payment Failed</p>
+                  <p className="text-rose-600 text-sm mt-2 mb-4">Please try again</p>
                   <button
                     onClick={handlePayNow}
                     disabled={createPayment.isPending}
-                    className="w-full px-6 py-3 bg-gradient-to-r from-red-500 to-pink-500 text-white rounded-xl font-bold hover:shadow-lg hover:scale-105 transform transition-all duration-300 disabled:opacity-50"
+                    className="w-full px-6 py-3 bg-gradient-to-r from-rose-500 to-pink-500 text-white rounded-xl font-bold hover:shadow-lg hover:-translate-y-0.5 transition disabled:opacity-50"
                   >
                     {createPayment.isPending ? (
                       <span className="flex items-center justify-center gap-2">
@@ -260,6 +272,16 @@ export default function OrderDetailPage() {
               )}
             </div>
           </div>
+        </div>
+
+        {/* Footer action (optional back link) */}
+        <div className="mt-10 text-center">
+          <Link to="/orders" className="inline-flex items-center gap-2 text-sky-700 hover:text-indigo-700 font-semibold transition">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+            Back to Orders
+          </Link>
         </div>
       </div>
     </div>
